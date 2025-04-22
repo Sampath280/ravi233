@@ -24,7 +24,9 @@ jobs:
           node-version: '18.x'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install vite --save-dev
 
       - name: Ensure node_modules/.bin is in PATH
         run: echo "${{ github.workspace }}/node_modules/.bin" >> $GITHUB_PATH
