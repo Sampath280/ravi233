@@ -26,14 +26,12 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          npm install vite --save-dev
-
-      - name: Ensure node_modules/.bin is in PATH
-        run: echo "${{ github.workspace }}/node_modules/.bin" >> $GITHUB_PATH
+          npm install -g vite
 
       - name: Build and test
         run: |
-          npm run build --if-present
+          vite build --outDir dist/client
+          npm run build:server
           npm run test --if-present
 
       - name: Zip artifact for deployment
